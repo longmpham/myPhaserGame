@@ -245,7 +245,7 @@ function update() {
 }
 
 function randomizeObjectTimer(){
-    if(game.time.now > randomizeTimer){
+    if(game.time.now > randomizeTimer && hearts.countLiving() > 0){
         randomizeObjectLocation(coin);
 //        randomizeObjectLocation(weaponBox);
         randomizeTimer = game.time.now + 5000;
