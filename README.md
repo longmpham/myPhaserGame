@@ -11,3 +11,8 @@ third section is the update section. These are the only sections that are needed
 
 Once copied properly, you should be able to hit "Play" in their Sandbox and everything should run, no set up necessary.
 
+
+Here is the link for Sandbox:
+http://phaser.io/sandbox/edit/1
+
+
