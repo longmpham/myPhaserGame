@@ -12,7 +12,7 @@ function preload() {
     game.load.image('heart', 'sprites/carrot.png');
     game.load.spritesheet('coin', 'sprites/coin.png', 32, 32);
     
- //   game.load.image('weaponBox', 'sprites/block.png');
+    game.load.image('weaponBox', 'sprites/block.png');
         
 }
 
@@ -71,12 +71,12 @@ function create() {
     coin.play('coinAnimation');
     game.physics.enable(coin, Phaser.Physics.ARCADE);
 
-/*
+
     //make weapon box!
     weaponBox = game.add.sprite(game.world.randomX, game.world.randomY, 'weaponBox');
     weaponBox.scale.set(0.25); //make the weaponbox smaller than the image itself
     game.physics.enable(weaponBox, Phaser.Physics.ARCADE);
-*/
+
 
     //gameover text is hidden until activated
     gameOverText = game.add.text(200, 300, ' ', {
@@ -202,7 +202,7 @@ function start(){
     createMonsters();
     ship.revive();
     randomizeObjectLocation(coin);
-//    randomizeObjectLocation(weaponBox);
+    randomizeObjectLocation(weaponBox);
 
     gameOverText.visible = false;
     highScoreText.visible = false;
@@ -247,7 +247,7 @@ function update() {
 function randomizeObjectTimer(){
     if(game.time.now > randomizeTimer && hearts.countLiving() > 0){
         randomizeObjectLocation(coin);
-//        randomizeObjectLocation(weaponBox);
+        randomizeObjectLocation(weaponBox);
         randomizeTimer = game.time.now + 5000;
     }
 }
@@ -293,11 +293,11 @@ function fire() {
 
 //you hit a monster with a bullet!
 function bulletHitMonster (bullet, monster) {
-    //  When a bullet hits a monster we kill them both
+    // When a bullet hits a monster we kill them both
     bullet.kill();
     monster.kill();
 
-    //boom! 
+    // boom! 
     var explosion = explosions.getFirstExists(false);
     explosion.reset(monster.body.x, monster.body.y);
     explosion.play('boom', 30, false, true);
@@ -372,12 +372,12 @@ function collisionDetection(){
     game.physics.arcade.overlap(ship, coin, shipHitCoin, null, this);
     
     //hit a weapon box
-//    game.physics.arcade.overlap(ship, weaponBox, shipHitWeaponBox, null, this);
+    game.physics.arcade.overlap(ship, weaponBox, shipHitWeaponBox, null, this);
     
 }
 
 
-/*
+
 function shipHitWeaponBox(theShip, theWeaponBox){
     //kill the weapon
     weaponBox.kill();
@@ -399,7 +399,7 @@ function shipHitWeaponBox(theShip, theWeaponBox){
 function checkWeaponChange(){
     fireRate = fireRate / 2;
 }
-*/
+
 
 function shipHitCoin(theSip, theCoin){
     //kill the coin
